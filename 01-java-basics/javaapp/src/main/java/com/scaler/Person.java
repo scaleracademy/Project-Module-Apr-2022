@@ -3,10 +3,8 @@ package com.scaler;
 
 import lombok.*;
 
-@AllArgsConstructor(access = lombok.AccessLevel.PRIVATE)
-@Getter
 @Builder
-@EqualsAndHashCode(of = {"name", "age"})
+@Data
 //@ToString
 public class Person {
     private String name;

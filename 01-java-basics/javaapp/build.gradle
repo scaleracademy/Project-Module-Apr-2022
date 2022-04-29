@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id "io.freefair.lombok" version "6.4.3"
+
 }
 
 group 'com.scaler'

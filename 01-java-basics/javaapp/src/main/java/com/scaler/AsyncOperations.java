@@ -2,13 +2,17 @@ package com.scaler;
 
 public class AsyncOperations {
 
+    interface OnTaskEndListener {
+        void onTaskEnd();
+    }
+
     static class MockLongTask {
-        private String name;
+        private final String name;
         public MockLongTask(String name) {
             this.name = name;
         }
 
-        void run () {
+        void run (OnTaskEndListener listener) {
             new Thread(() -> {
                 System.out.println("MockLongTask.run(" + name + ") started");
                 var start = System.currentTimeMillis();
@@ -16,16 +20,21 @@ public class AsyncOperations {
                 // in real life, this would be a long running task
                 while (System.currentTimeMillis() - start < 10000) {}
                 System.out.println("MockLongTask.run("+ name + ") ended");
-
+                if (listener != null) {
+                    listener.onTaskEnd();
+                }
             }).start();
         }
+        void run() {run(null);}
     }
 
     public static void main(String[] args) {
-        var task1 = new MockLongTask("download");
-        var task2 = new MockLongTask("encrypt");
 
-        task1.run();
-        task2.run();
+        var taskA = new MockLongTask("1-download");
+        var taskB = new MockLongTask("1-encrypt");
+        var taskC = new MockLongTask("2-unrelated");
+
+        taskA.run(() -> taskB.run());
+        taskC.run();
     }
 }

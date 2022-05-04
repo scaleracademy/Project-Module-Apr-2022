@@ -12,4 +12,10 @@ public interface TasksService {
     Task createTask(Task task);
     Task updateTask(int id, Task task);
     void deleteTask(int id);
+
+    class TaskNotFoundException extends RuntimeException {
+        public TaskNotFoundException(int id) {
+            super("Could not find task " + id);
+        }
+    }
 }

@@ -1,0 +1,11 @@
+
+
+## REST APIs 
+
+|        | /users                                                                                                                                                        | /users/23                                                                                                                      |
+|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| GET    | get all users  search ops also work here via query <br>     /users?name=Arnav : fetch users with name Arnav <br> /users?minAge=20 : fetch users with age > 20 | get user whose id = 23                                                                                                         |
+| POST   | create a new user   request must contain new user obj NOTE: server will generate id of new obj                                                                | ---NA---                                                                                                                       |
+| PUT    | ---NA---                                                                                                                                                      | create a new user with id = 23   overwrite an user if that existed  <br>   NOTE: only if server lets clients set id of new obj |
+| PATCH  | ---NA---                                                                                                                                                      | update the fields of user with id = 23   fields which are supplied in request body <br>    are merged to existing object       |
+| DELETE | ---NA---                                                                                                                                                      | delete user whose id = 23                                                                                                      |

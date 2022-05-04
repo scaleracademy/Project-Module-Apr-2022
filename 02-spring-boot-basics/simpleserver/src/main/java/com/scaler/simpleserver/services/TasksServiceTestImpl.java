@@ -13,7 +13,6 @@ public class TasksServiceTestImpl implements TasksService {
     public TasksServiceTestImpl() {
         taskList = new ArrayList<>();
         taskList.add(new Task(1, "test task 1", false, new Date()));
-        taskList.add(new Task(2, "test task 2", false, new Date()));
         taskList.add(new Task(3, "test task 3", false, new Date()));
     }
     private Task findTaskById(int id) {

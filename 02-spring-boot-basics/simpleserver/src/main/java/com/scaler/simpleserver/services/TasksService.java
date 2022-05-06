@@ -13,7 +13,7 @@ public interface TasksService {
     Task updateTask(int id, Task task);
     void deleteTask(int id);
 
-    class TaskNotFoundException extends RuntimeException {
+    class TaskNotFoundException extends IllegalArgumentException {
         public TaskNotFoundException(int id) {
             super("Could not find task " + id);
         }

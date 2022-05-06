@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation ("org.springdoc:springdoc-openapi-ui:1.6.4")
     implementation ("org.springframework.boot:spring-boot-starter-web")
     testImplementation ("org.springframework.boot:spring-boot-starter-test")
 }

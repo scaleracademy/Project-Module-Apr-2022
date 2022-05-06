@@ -17,7 +17,7 @@ public class TasksServiceImpl implements TasksService {
         taskList.add(new Task(3, "more tasks", false, new Date()));
     }
     private Task findTaskById(int id) {
-        AtomicReference<Task> task = null;
+        AtomicReference<Task> task = new AtomicReference<>();
         taskList.forEach(t -> {
             if (t.getId() == id) { task.set(t); }
         });

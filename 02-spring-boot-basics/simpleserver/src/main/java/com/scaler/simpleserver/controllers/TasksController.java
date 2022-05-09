@@ -4,14 +4,11 @@ import com.scaler.simpleserver.dto.ErrorResponse;
 import com.scaler.simpleserver.dto.SuccessResponse;
 import com.scaler.simpleserver.dto.TasksResponse;
 import com.scaler.simpleserver.models.Task;
-import com.scaler.simpleserver.services.TasksService;
+import com.scaler.simpleserver.services.tasks.TasksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.http.HttpResponse;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/tasks")
@@ -38,13 +35,16 @@ public class TasksController {
     }
 
     @PostMapping("")
-    public String createTask(@RequestBody String task) {
-        return "TODO: Create task = " + task;
+    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+        Task newTask = tasksService.createTask(task);
+        return new ResponseEntity<Task>(newTask, null, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{id}")
-    public String updateTask(@PathVariable("id") String id, @RequestBody String task) {
-        return "TODO: Update task no = " + id + " with task = " + task;
+    public ResponseEntity<Task> updateTask(@PathVariable("id") String id, @RequestBody Task task) {
+        int newId = Integer.parseInt(id);
+        Task updatedTask = tasksService.updateTask(newId, task);
+        return new ResponseEntity<Task>(updatedTask, null, HttpStatus.OK);
     }
 
     @ExceptionHandler(TasksService.TaskNotFoundException.class)

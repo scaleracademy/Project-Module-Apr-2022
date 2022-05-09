@@ -1,4 +1,4 @@
-package com.scaler.simpleserver.services;
+package com.scaler.simpleserver.services.tasks;
 
 import com.scaler.simpleserver.models.Task;
 
@@ -7,17 +7,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class TasksServiceImpl implements TasksService {
+public class TasksServiceTestImpl implements TasksService {
     private ArrayList<Task> taskList;
 
-    public TasksServiceImpl() {
+    public TasksServiceTestImpl() {
         taskList = new ArrayList<>();
-        taskList.add(new Task(1, "sample task", false, new Date()));
-        taskList.add(new Task(2, "another task", false, new Date()));
-        taskList.add(new Task(3, "more tasks", false, new Date()));
+        taskList.add(new Task(1, "test task 1", false, new Date()));
+        taskList.add(new Task(3, "test task 3", false, new Date()));
     }
     private Task findTaskById(int id) {
-        AtomicReference<Task> task = new AtomicReference<>();
+        AtomicReference<Task> task = null;
         taskList.forEach(t -> {
             if (t.getId() == id) { task.set(t); }
         });

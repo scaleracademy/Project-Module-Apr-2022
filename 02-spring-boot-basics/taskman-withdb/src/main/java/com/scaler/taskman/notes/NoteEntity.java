@@ -1,5 +1,6 @@
 package com.scaler.taskman.notes;
 
+import com.scaler.taskman.tasks.TaskEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,5 +20,9 @@ public class NoteEntity {
     @NonNull
     @Column
     private String text;
+
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private TaskEntity task;
 
 }

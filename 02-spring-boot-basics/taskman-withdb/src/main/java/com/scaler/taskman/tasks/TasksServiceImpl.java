@@ -11,11 +11,13 @@ public class TasksServiceImpl implements TasksService {
 
     @Autowired
     public TasksServiceImpl(TasksRepository tasksRepo) {
+
         this.tasksRepo = tasksRepo;
     }
 
     @Override
     public List<TaskEntity> getAllTasks() {
+
         return tasksRepo.findAll();
     }
 

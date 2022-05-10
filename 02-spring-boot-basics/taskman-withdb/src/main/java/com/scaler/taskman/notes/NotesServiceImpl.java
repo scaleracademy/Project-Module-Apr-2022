@@ -10,11 +10,13 @@ public class NotesServiceImpl implements NotesService {
 
     @Autowired
     public NotesServiceImpl(NotesRepository notesRepo) {
+
         this.notesRepo = notesRepo;
     }
 
     @Override
     public List<NoteEntity> getNotesForTask(TaskEntity task) {
+
         return notesRepo.findAllByTaskId(task.getId());
     }
 

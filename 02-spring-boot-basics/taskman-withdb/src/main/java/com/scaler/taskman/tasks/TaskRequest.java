@@ -10,7 +10,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskRequest {
-
     private String name;
     private Date dueDate;
     private Boolean completed;

@@ -24,20 +24,19 @@ public class TasksController {
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskEntity> getTaskByID(@PathVariable("id") Long id){
-
         TaskEntity taskEntity = tasksService.getTaskById(id);
         return ResponseEntity.ok(taskEntity);
     }
 
     @PostMapping()
-    public String addTask(@RequestBody TaskRequest taskRequest){
+    public ResponseEntity<String> addTask(@RequestBody TaskRequest taskRequest){
         TaskEntity taskEntity = new TaskEntity();
         taskEntity.setName(taskRequest.getName());
         taskEntity.setDueDate(taskRequest.getDueDate());
         taskEntity.setCompleted(taskRequest.getCompleted());
         tasksService.addTask(taskEntity);
 
-        return "Task created successfully";
+        return ResponseEntity.ok("Task created successfully");
     }
 
     @PatchMapping("/{id}")

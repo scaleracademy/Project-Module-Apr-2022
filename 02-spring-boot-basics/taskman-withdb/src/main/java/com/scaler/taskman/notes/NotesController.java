@@ -40,13 +40,13 @@ public class NotesController {
         NoteEntity noteEntity = new NoteEntity();
         noteEntity.setText(notesRequest.getText());
         notesService.addNoteToTask(taskEntity,noteEntity);
-
         return ResponseEntity.ok().body(
                 new NotesSuccessResponse(("Notes added to Task ID " + id + "successfully")));
     }
 
     @DeleteMapping("")
     public ResponseEntity<NotesSuccessResponse> deleteNotesById(@PathVariable("id") Long id){
+
         notesService.deleteNote(id);
         return ResponseEntity.accepted().body(new NotesSuccessResponse("Note ID " + id + "deleted!!"));
     }

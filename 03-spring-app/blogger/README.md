@@ -138,6 +138,13 @@ get user profile by user id
 ##### `GET /users/@{username}` 🔐
 get user profile by username
 
+##### `PUT /users/@{username}/follow` 🔐
+follow a user
+
+##### `DELETE /users/@{username}/follow` 🔐👤
+unfollow a user
+
+
 #### articles
 
 ##### `POST /articles` 🔐
@@ -146,11 +153,17 @@ create a new article
 ##### `GET /articles/{article-slug}`
 get article by slug
 
-##### `PATCH /articles/{article-slug}` 🔐
+##### `PATCH /articles/{article-slug}` 🔐👤
 update article by slug 
 
-##### `DELETE /articles/{article-slug}` 🔐
+##### `DELETE /articles/{article-slug}` 🔐👤
 delete article by slug
+
+##### `PUT /articles/{article-slug}/like` 🔐
+like article by slug
+
+##### `DELETE /articles/{article-slug}/like` 🔐👤
+unlike article by slug
 
 ##### `GET /articles` 📄
 get all articles 
@@ -170,5 +183,5 @@ create a new comment on a given article
 ##### `GET /articles/{article-slug}/comments` 📄
 get all comments on a given article
 
-##### `DELETE /articles/{article-slug}/comments/{comment-id}` 🔐
+##### `DELETE /articles/{article-slug}/comments/{comment-id}` 🔐👤
 delete a comment on a given article

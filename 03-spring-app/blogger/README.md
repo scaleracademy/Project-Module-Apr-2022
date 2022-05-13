@@ -175,6 +175,39 @@ available query parameters:
 - `?author=username` : filter articles by author
 - `?title=something` : search articles by title (i.e. title includes `something`)
 
+<details>
+  <summary>Response</summary>
+
+```json
+[
+  {
+    "id": 124,
+    "heading": "My first blog post",
+    "slug": "my-first-blog-post",
+    "subheading": "This is my first blog post",
+    "tags": ["blog", "first"],
+    "author": {
+      "username": "johndoe001",
+      "avatar": "https://avatars.dicebear.com/v2/johndoe001.png"
+    },
+    "createdAt": "2020-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 422,
+    "heading": "Another nice article",
+    "slug": "another-nice-article",
+    "subheading": "This is another nice article",
+    "tags": ["article", "first"],
+    "author": {
+      "username": "johndoe001",
+      "avatar": "https://avatars.dicebear.com/v2/johndoe001.png"
+    },
+    "createdAt": "2020-01-01T00:00:00.000Z"
+  }
+]
+```
+</details>
+
 #### comments
 
 ##### `POST /articles/{article-slug}/comments` 🔐

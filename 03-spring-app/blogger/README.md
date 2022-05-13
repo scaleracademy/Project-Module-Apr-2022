@@ -34,3 +34,22 @@
 
 ## Technical Details
 
+### Entities
+
+#### User 
+
+```json
+{
+  "username": "johndoe001",
+  "email": "john@mail.com",
+  "bio": "I am a software developer",
+  "avatar": "https://avatars.dicebear.com/v2/johndoe001.png"
+}
+```
+> NOTE: `password` has to be hashed and stored too
+
+
+#### Article 
+
+#### Comment
+

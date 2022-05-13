@@ -1,10 +1,12 @@
 package com.scaler.taskman.tasks;
 
+import com.scaler.taskman.notes.NoteEntity;
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -28,4 +30,7 @@ public class TaskEntity {
 
     @Column
     private Boolean completed;
+
+    @OneToMany
+    private List<NoteEntity> notes;
 }

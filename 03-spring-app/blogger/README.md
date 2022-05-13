@@ -40,10 +40,12 @@
 
 ```json
 {
+  "id": 12,
   "username": "johndoe001",
   "email": "john@mail.com",
   "bio": "I am a software developer",
-  "avatar": "https://avatars.dicebear.com/v2/johndoe001.png"
+  "avatar": "https://avatars.dicebear.com/v2/johndoe001.png",
+  "createdAt": "2020-01-01T00:00:00.000Z"
 }
 ```
 > NOTE: `password` has to be hashed and stored too
@@ -51,5 +53,29 @@
 
 #### Article 
 
+```json
+{
+  "id": 124,
+  "heading": "My first blog post",
+  "slug": "my-first-blog-post",
+  "subheading": "This is my first blog post",
+  "tags": ["blog", "first"],
+  "content": "<p>This is my first blog post</p>",
+  "authorId": 12,
+  "createdAt": "2020-01-01T00:00:00.000Z"
+}
+```
+
 #### Comment
+
+```json
+{
+  "id": 17,
+  "title": "My first comment",
+  "body": "This is my first comment",
+  "articleId": 124,
+  "authorId": 42,
+  "createdAt": "2020-01-01T00:00:00.000Z"
+}
+```
 

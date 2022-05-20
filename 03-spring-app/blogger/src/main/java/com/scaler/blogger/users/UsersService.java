@@ -2,6 +2,7 @@ package com.scaler.blogger.users;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.net.http.HttpResponse;
@@ -11,10 +12,12 @@ import java.util.Optional;
 public class UsersService {
     private UsersRepository usersRepository;
     private ModelMapper modelMapper;
+    private UserJwtService jwtService;
 
-    public UsersService(UsersRepository usersRepository, ModelMapper modelMapper) {
+    public UsersService(UsersRepository usersRepository, ModelMapper modelMapper, UserJwtService jwtService) {
         this.usersRepository = usersRepository;
         this.modelMapper = modelMapper;
+        this.jwtService = jwtService;
     }
 
     /**
@@ -24,9 +27,10 @@ public class UsersService {
      * @return
      */
     public UserDTO.LoginUserResponse signupUser(UserDTO.CreateUserRequest user) {
+        // TODO: check for invalid inputs and non unique username/email
         UserEntity savedUser = usersRepository.save(modelMapper.map(user, UserEntity.class));
         UserDTO.LoginUserResponse response = modelMapper.map(savedUser, UserDTO.LoginUserResponse.class);
-        response.setToken("token"); // TODO: generate token for logged in users
+        response.setToken(jwtService.createJwtToken(response.getUsername()));
         return response;
     }
 
@@ -42,7 +46,7 @@ public class UsersService {
         // TODO: match password using hashing
         if (userEntity.getPassword().equals(user.getPassword())) {
             UserDTO.LoginUserResponse response = modelMapper.map(userEntity, UserDTO.LoginUserResponse.class);
-            response.setToken("token"); // TODO: generate token for logged in users
+            response.setToken(jwtService.createJwtToken(response.getUsername()));
             return response;
         } else {
             throw new UserAuthenticationException();

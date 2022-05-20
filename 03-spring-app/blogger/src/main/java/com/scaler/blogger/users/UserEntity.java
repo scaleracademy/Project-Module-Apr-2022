@@ -25,6 +25,10 @@ public class UserEntity extends BaseEntity {
 	@NonNull
 	private String username;
 
+	@Column(nullable = false)
+	@NonNull
+	private String password;
+
 	private String bio;
 	private String avatar;
 

@@ -17,11 +17,11 @@ import java.util.Date;
 @Entity(name = "users")
 public class UserEntity extends BaseEntity {
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	@NonNull
 	private String email;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	@NonNull
 	private String username;
 

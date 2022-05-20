@@ -22,6 +22,7 @@ public class UserDTO {
 
     @Data
     public static class LoginUserResponse {
+        private Integer id;
         private String username;
         private String email;
         private String bio;

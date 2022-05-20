@@ -3,6 +3,8 @@ package com.scaler.blogger.users;
 import com.scaler.blogger.common.ErrorDTO;
 import jdk.jfr.ContentType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -37,7 +39,8 @@ public class UsersController {
 
     @GetMapping(path = "/@{username}", produces = "application/json")
     ResponseEntity<UserDTO.GetUserResponse> getUser(
-            @PathVariable ("username") String username
+            @PathVariable ("username") String username,
+            @AuthenticationPrincipal UserEntity authenticatedUser
     ) {
         var response = usersService.getUserByUsername(username);
         return ResponseEntity.ok(response);

@@ -60,8 +60,12 @@ public class UsersService {
         return modelMapper.map(userEntity, UserDTO.GetUserResponse.class);
     }
 
-
-
+    public UserEntity getUserEntityByUsername(String username) {
+        UserEntity userEntity = usersRepository.findByUsername(username).orElseThrow(
+                () -> new UserNotFoundException(username)
+        );
+        return userEntity;
+    }
 
     static class UserNotFoundException extends RuntimeException {
         public UserNotFoundException(String username) {

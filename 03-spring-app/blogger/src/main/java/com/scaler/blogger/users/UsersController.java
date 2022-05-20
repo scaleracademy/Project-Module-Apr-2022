@@ -1,6 +1,7 @@
 package com.scaler.blogger.users;
 
 import com.scaler.blogger.common.ErrorDTO;
+import jdk.jfr.ContentType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,14 @@ public class UsersController {
             @RequestBody UserDTO.LoginUserRequest request
     ) {
         var response = usersService.loginUser(request);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(path = "/@{username}", produces = "application/json")
+    ResponseEntity<UserDTO.GetUserResponse> getUser(
+            @PathVariable ("username") String username
+    ) {
+        var response = usersService.getUserByUsername(username);
         return ResponseEntity.ok(response);
     }
 

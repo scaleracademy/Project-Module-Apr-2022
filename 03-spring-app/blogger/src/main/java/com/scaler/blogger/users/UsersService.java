@@ -22,9 +22,6 @@ public class UsersService {
 
     /**
      * signup user
-     *
-     * @param user
-     * @return
      */
     public UserDTO.LoginUserResponse signupUser(UserDTO.CreateUserRequest user) {
         // TODO: check for invalid inputs and non unique username/email
@@ -52,6 +49,18 @@ public class UsersService {
             throw new UserAuthenticationException();
         }
     }
+
+    /**
+     * get user by username
+     */
+    public UserDTO.GetUserResponse getUserByUsername(String username) {
+        UserEntity userEntity = usersRepository.findByUsername(username).orElseThrow(
+                () -> new UserNotFoundException(username)
+        );
+        return modelMapper.map(userEntity, UserDTO.GetUserResponse.class);
+    }
+
+
 
 
     static class UserNotFoundException extends RuntimeException {
